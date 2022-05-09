@@ -54,8 +54,8 @@ public class TestBowling {
         game.move_strike();
         game.move_strike();
         game.move_strike();
-        game.add_bonus_score(tab_score);
         game.final_frame_strike(10, 10);
+        game.add_bonus_score(tab_score);
         Assertions.assertEquals(300, game.final_score);
         System.out.println(tab_score);
     }

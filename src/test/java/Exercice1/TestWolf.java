@@ -15,7 +15,9 @@ public class TestWolf {
 
     @Test
     public void testCircularity() {
+        System.out.println(wolf.position);
         wolf.next();
+        System.out.println(wolf.position);
         Assertions.assertEquals( wolf.position, EPosition.EST );
         wolf.next();
         Assertions.assertEquals( wolf.position, EPosition.SUD );

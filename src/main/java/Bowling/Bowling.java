@@ -54,6 +54,7 @@ public class Bowling {
         */
         int score = 0;
         score += ball1_bonus + ball2_bonus;
+        tab_score.add(new Tour(ball1_bonus, ball2_bonus));
         final_score += score;
     }
 
@@ -64,6 +65,7 @@ public class Bowling {
         */
         int score = 10;
         score += ball_bonus;
+        tab_score.add(new Tour(ball_bonus, 0));
         final_score += score;
     }
 
@@ -77,6 +79,7 @@ public class Bowling {
 
     public void add_bonus_score(List<Tour> tab_score) {
         int bonus = 0;
+        System.out.println("final score is " + final_score);
         for (int i = 0; i < tab_score.size(); i++) {
             if (tab_score.get(i).isStrike) {
                 bonus += get_strike_bonus(i);
@@ -86,6 +89,7 @@ public class Bowling {
             }
         }
         final_score += bonus;
+        System.out.println("bonus is " + bonus);
     }
 
     public int get_strike_bonus(int i) {
@@ -98,7 +102,7 @@ public class Bowling {
                 bonus += tab_score.get(i + 1).first_move;
                 bonus += tab_score.get(i + 1).second_move;
             }
-        } else if (i < tab_score.size() - 1) {
+        } else if (i < tab_score.size() - 2) {
             bonus += tab_score.get(i + 1).first_move;
         }
 
