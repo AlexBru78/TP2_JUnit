@@ -8,15 +8,20 @@ public class Wolf {
     }
 
     public void next() {
-        switch (this.position) {
+        EPosition currentPos = position;
+        switch (currentPos) {
             case NORD:
-                this.position = EPosition.EST;
+                position = EPosition.EST;
+                break;
             case EST:
-                this.position = EPosition.SUD;
+                position = EPosition.SUD;
+                break;
             case SUD:
-                this.position = EPosition.OUEST;
+                position = EPosition.OUEST;
+                break;
             case OUEST:
-                this.position = EPosition.NORD;
+                position = EPosition.NORD;
+                break;
 
         }
     }
