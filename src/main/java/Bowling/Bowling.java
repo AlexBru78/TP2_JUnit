@@ -20,7 +20,7 @@ public class Bowling {
         @return : sum of the spare score and bonus score of the next ball
         */
         int score = ball1 + (10 - ball1);
-        tab_score.add(new Tour(ball1, 10 - ball1, false, true));
+        tab_score.add(new Tour(ball1, 10 - ball1));
         final_score += score;
     }
 
@@ -31,7 +31,7 @@ public class Bowling {
         @return : sum of the strike score and two bonus ball of the next two ball
         */
         int score = 10;
-        tab_score.add(new Tour(10, 0, true, false));
+        tab_score.add(new Tour(10, 0));
         final_score += score;
     }
 
@@ -42,7 +42,7 @@ public class Bowling {
         @return : sum of the two balls
         */
         int score = ball1 + ball2;
-        tab_score.add(new Tour(ball1, ball2, false, false));
+        tab_score.add(new Tour(ball1, ball2));
         final_score += score;
     }
 
