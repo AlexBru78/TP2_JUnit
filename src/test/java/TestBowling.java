@@ -24,7 +24,6 @@ public class TestBowling {
         game.add_bonus_score(tab_score);
         game.final_frame_strike(10, 10);
         Assertions.assertEquals(220, game.final_score);
-        System.out.println(tab_score);
     }
     @Test
     public void TestGameAllStrike() {
@@ -41,7 +40,6 @@ public class TestBowling {
         game.final_frame_strike(10, 10);
         game.add_bonus_score(tab_score);
         Assertions.assertEquals(300, game.final_score);
-        System.out.println(tab_score);
     }
 
     @Test

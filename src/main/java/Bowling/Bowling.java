@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Bowling {
 
-    public int final_score;
-    List<Tour> tab_score;
+    public int final_score; // final score of the game
+    List<Tour> tab_score; // List of score composed of two moves
 
     public Bowling(int final_score, List<Tour> tab_score) {
         this.final_score = final_score;
@@ -16,8 +16,7 @@ public class Bowling {
     public void move_spare(int ball1) {
         /*@param :
         ball1 : score of the first ball
-        bonus_ball : bonus score of the spare
-        @return : sum of the spare score and bonus score of the next ball
+        This function adds the spare score to the final score
         */
         int score = ball1 + (10 - ball1);
         tab_score.add(new Tour(ball1, 10 - ball1));
@@ -25,10 +24,8 @@ public class Bowling {
     }
 
     public void move_strike() {
-        /*@param :
-        first_bonus_ball : score of the first bonus ball
-        second_bonus_ball : score of the second bonus ball
-        @return : sum of the strike score and two bonus ball of the next two ball
+        /*
+        This function adds the strike score to the final score
         */
         int score = 10;
         tab_score.add(new Tour(10, 0));
@@ -39,7 +36,7 @@ public class Bowling {
         /*@param :
         ball1 : score of the first ball
         ball2 : score of the second ball
-        @return : sum of the two balls
+        This function adds the bad score to the final score (a bad score is a score that is under 10 with two balls)
         */
         int score = ball1 + ball2;
         tab_score.add(new Tour(ball1, ball2));
@@ -50,7 +47,7 @@ public class Bowling {
         /*@param :
         ball1_bonus : score of the first bonus ball
         ball2_bonus : score of the second bonus ball
-        @return : sum of the two bonus balls and the strike of the last frame
+        This function adds the strike score to the final score and the bonus score defines in parameters
         */
         int score = 0;
         score += ball1_bonus + ball2_bonus;
@@ -60,8 +57,8 @@ public class Bowling {
 
     public void final_frame_spare(int ball_bonus) {
         /*@param :
-        ball_bonus : score of the first ball
-        @return : sum of the bonus ball and the spare of the last frame
+        ball_bonus : score of the bonus ball
+        This function adds the spare score to the final score and the bonus score defines in parameters
         */
         int score = 10;
         score += ball_bonus;
@@ -72,14 +69,17 @@ public class Bowling {
     public void final_frame_bad(int score) {
         /*@param :
         score : score of the ball
-        @return : score of the ball
+        This function adds the bad score to the final score with no bonus
         */
         final_score += score;
     }
 
     public void add_bonus_score(List<Tour> tab_score) {
+        /*@param :
+        tab_score : list of all scores of type Tour, each Tour is composed of two moves
+        This function adds all the bonus score of the game to the final score
+        */
         int bonus = 0;
-        System.out.println("final score is " + final_score);
         for (int i = 0; i < tab_score.size(); i++) {
             if (tab_score.get(i).isStrike) {
                 bonus += get_strike_bonus(i);
@@ -89,10 +89,13 @@ public class Bowling {
             }
         }
         final_score += bonus;
-        System.out.println("bonus is " + bonus);
     }
 
     public int get_strike_bonus(int i) {
+        /*@param :
+        i : index in the list
+        This function allows you to obtain the bonus for strikes
+        */
         int bonus = 0;
         if (i < tab_score.size() - 2) {
             if (tab_score.get(i + 1).isStrike) {
@@ -110,6 +113,10 @@ public class Bowling {
     }
 
     public int get_spare_bonus(int i) {
+        /*@param :
+        i : index in the list
+        This function allows you to obtain the bonus for spares
+        */
         if (i < tab_score.size() - 1) {
             return tab_score.get(i + 1).first_move;
         }
